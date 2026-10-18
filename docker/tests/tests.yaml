@@ -1,0 +1,15 @@
+test_compile:
+  command: /opt/riscv/bin/riscv32-unknown-elf-gcc -march=rv32im -mabi=ilp32 -ffreestanding -nostdlib -Wl,-e,main -o test.elf test.c
+  validate: ls test.elf
+  match: '.*test\.elf.*'
+
+test_compile2:
+  command: riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -ffreestanding -nostdlib -Wl,-e,main -o test2.elf test.c
+  validate: ls test2.elf
+  match: '.*test2\.elf.*'
+
+# Keys without the test_ prefix are ignored.
+example:
+  command: echo "This test will not run"
+  validate: echo "ignored"
+  match: ignored
