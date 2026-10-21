@@ -1,0 +1,25 @@
+# CHANGELOG
+
+## [0.1.3] - 2026-10-22
+
+### Added
+
+- A `--build-test` Docker runner option to initialize and build `riscv-tests`
+  for RV32, then install generated tests under the RISC-V toolchain prefix.
+- Pytest and Autoconf in the Docker image.
+- README instructions for building RISC-V tests.
+
+### Removed
+
+- The generated `docker/tests/test.elf` binary; tests should build it when
+  needed.
+
+## [0.1.2] - 2026-10-18
+
+### Added
+
+- Initial repository setup for the RISC-V tools project.
+- Docker image and helper scripts for building and running the development
+  environment.
+- YAML-driven test runner and sample test program.
+

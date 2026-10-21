@@ -39,11 +39,13 @@ RUN apt-get update && apt-get install -y \
     perl \
     python3 \
     python3-pip \
+    python3-pytest \
     python3-tomli \
     texinfo \
     zlib1g-dev \
     iverilog \
     verilator \
+    autoconf \
     && rm -rf /var/lib/apt/lists/*
 
 # Build the RISC-V bare-metal GNU toolchain for RV32IM

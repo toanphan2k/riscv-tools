@@ -34,7 +34,7 @@ set simulators. Icarus Verilog and Verilator are HDL simulators for the RTL.
 From the workspace root:
 
 ```bash
-./rv_tools/docker/tools/build_docker.sh ./rv_tools/docker
+bash ./rv_tools/docker/tools/build_docker.sh ./rv_tools/docker
 ```
 
 The script reads the image name and tag from
@@ -73,6 +73,33 @@ To see the script's supported arguments:
 ```bash
 ./rv_tools/docker/tools/run_docker.sh --help
 ```
+
+## Build the RISC-V ISA tests
+
+From either the workspace root (containing `riscv-tests/`) or the `rv_tools/`
+directory, run:
+
+```bash
+./docker/tools/run_docker.sh --build-test
+```
+
+When run from the workspace root, use:
+
+```bash
+./rv_tools/docker/tools/run_docker.sh --build-test
+```
+
+This starts `toan_test:lastest`, mounts the workspace at `/workspace`,
+initializes the `riscv-tests` Git submodules (including the environment headers),
+then builds only the RV32 user-level integer (`rv32ui`) and multiply/divide
+(`rv32um`) ISA test groups using `-march=rv32im_zicsr_zifencei -mabi=ilp32`.
+`Zicsr` is needed by the harness, and
+`Zifencei` is needed by the `fence_i` test. The generated programs therefore
+require both extensions in addition to RV32IM to run. This does not build
+benchmarks, floating-point tests, or other ISA groups. Generated test binaries
+are written under `riscv-tests/isa/` in the mounted workspace. The image must
+already be available locally, and the container needs network access to fetch
+submodules that have not been initialized yet.
 
 ## Test tooling
 
