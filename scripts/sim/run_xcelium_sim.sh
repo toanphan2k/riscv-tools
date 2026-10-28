@@ -84,10 +84,17 @@ create_output_dir() {
 
 run_behavioral_sim() {
     local status
+    local -a xrun_args
+    xrun_args+=(-64bit)
+    xrun_args+=(-sv)
+    xrun_args+=(-top "$TOP_MODULE")
+    xrun_args+=(-l xrun.log)
+    xrun_args+=(-f "$RTL_FILE_LIST")
+    xrun_args+=("$TOP_SOURCE")
+
     cd -- "$OUTPUT_DIR"
     printf '\n===== top %s: %s =====\n' "$TOP_MODULE" "$PWD"
-    if "$xrun_bin" -64bit -sv -top "$TOP_MODULE" -l xrun.log \
-        -f "$RTL_FILE_LIST" "$TOP_SOURCE" > console.log 2>&1; then
+    if "$xrun_bin" "${xrun_args[@]}" > console.log 2>&1; then
         cat console.log
         printf 'PASS: top %s compiled and ran successfully\n' "$TOP_MODULE"
     else
