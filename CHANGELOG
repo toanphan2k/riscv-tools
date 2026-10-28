@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [0.2.0] - 2026-10-28
+
+### Added
+
+- Porting xcelium runner script for behavioral simulation
+
 ## [0.1.3] - 2026-10-22
 
 ### Added
