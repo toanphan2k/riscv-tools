@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## [0.3.0] - 2026-10-30
+
+### Added
+
+- --uvm Enable  UVM for compile-and-run or compile-only
+- --test-name   NAME Set +UVM_TESTNAME=NAME
+- --compile     Compile only; do not simulate
+- --run, -R     Run the prior compile in this top's output directory
+
 ## [0.2.2] - 2026-10-28
 
 ### Added
